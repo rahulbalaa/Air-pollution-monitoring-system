@@ -1,0 +1,35 @@
+#define GAS_SENSOR_PIN A0  // Analog pin for gas sensor
+
+void setup() {
+
+  Serial.begin(9600);
+
+}
+
+void loop() {
+
+  // Read sensor value
+
+  int sensorValue = analogRead(GAS_SENSOR_PIN);
+
+  // Convert sensor value to voltage
+
+  float voltage = sensorValue * (5.0 / 1023.0);
+
+  // Convert voltage to gas concentration (modify based on sensor calibration)
+
+  float gasConcentration = voltage * 100.0;  // Scaling factor may vary depending on the sensor
+
+  // Print gas concentration
+
+  Serial.print("Gas concentration: ");
+
+  Serial.print(gasConcentration);
+
+  Serial.println(" ppm");
+
+  // Delay before next reading
+
+  delay(1000);
+
+}
